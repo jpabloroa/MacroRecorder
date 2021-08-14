@@ -1,0 +1,1 @@
+toggle action main{do wait -900;do click press -1 at -1364 -598;do wait -0;stop click press -1 at -1364 -598;}
