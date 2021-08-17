@@ -12,8 +12,6 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -26,11 +24,6 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
     /**
      *
      */
-    public String dir = "";
-
-    /**
-     *
-     */
     public String name;
     public Interactor ac;
     public File directorio;
@@ -39,12 +32,11 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
      * Creates new form Panel
      */
     public Panel() {
+        ac = new Interactor();
         initComponents();
         setLocationRelativeTo(null);
         label_nombre_app.setText("<html>Grabador y ejecutor de<br>Macros - EREL</html>");
-        ac = new Interactor();
-        directorio = new File(ac.modify("/dimRest","/src/dimrest/"));
-        
+        directorio = new File(ac.modify("/dimrest/"));
         combo.addItem("Seleccione una macro");
         actualizarTabla();
     }
@@ -58,7 +50,6 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
         boton_grabar = new javax.swing.JButton();
         boton_reproducir = new javax.swing.JButton();
         nombreMacro = new javax.swing.JTextField();
@@ -66,8 +57,6 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
         jLabel1 = new javax.swing.JLabel();
         label_nombre_app = new javax.swing.JLabel();
         logo_roverin = new javax.swing.JLabel();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +78,7 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
 
         label_nombre_app.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
 
-        logo_roverin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RES.png"))); // NOI18N
+        logo_roverin.setIcon(new ImageIcon(ac.modify("/images/RES.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,29 +87,31 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nombreMacro)
                     .addComponent(combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(boton_reproducir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(boton_grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(label_nombre_app, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(logo_roverin)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(logo_roverin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreMacro))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(logo_roverin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_nombre_app, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_nombre_app, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(logo_roverin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,13 +213,13 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
     private javax.swing.JButton boton_grabar;
     private javax.swing.JButton boton_reproducir;
     private javax.swing.JComboBox<String> combo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_nombre_app;
     private javax.swing.JLabel logo_roverin;
     private javax.swing.JTextField nombreMacro;
     // End of variables declaration//GEN-END:variables
 
+    //<editor-fold defaultstate="collapsed" desc="Métodos ActionListener">     
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -252,5 +243,5 @@ public class Panel extends javax.swing.JFrame implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
+    }// </editor-fold>  
 }

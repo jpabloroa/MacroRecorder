@@ -34,13 +34,13 @@ public class Interactor /*implements MouseListener, KeyListener*/ {
         if (NombreMacro != null) {
             switch (PROCESS) {
                 case 101:
-            this.ew = new ErelWriter(modify("/dimRest", "/src/dimRest/dll-exec-x68-" + formatString(Calendar.getInstance().getTime().toString(), 1) + formatString(NombreMacro, 1) + ".erel"));
+            this.ew = new ErelWriter(modify("/dimRest/dll-exec-x68-" + formatString(Calendar.getInstance().getTime().toString(), 1) + formatString(NombreMacro, 1) + ".erel"));
                     this.er = null;
             new Thread(this.ew).start();
                     break;
                 case 102:
                     this.ew = null;
-            this.er = new ErelLoader(modify("/dimRest", "/src/dimRest/dll-exec-x68-" + NombreMacro + ".erel"), new Robot());
+            this.er = new ErelLoader(modify("/dimRest/dll-exec-x68-" + NombreMacro + ".erel"), new Robot());
                     break;
                 default:
                     throw new IOException(" ¡ El proceso a realizar no se encuentra !");
@@ -151,9 +151,9 @@ public class Interactor /*implements MouseListener, KeyListener*/ {
      * @param dic
      * @return 
      */
-    public String modify(String ref, String dic) {
+    public String modify(String dic) {
         
-        String aux = getClass().getResource(ref).getFile().substring(1, 74) + dic;
+        String aux = getClass().getResource("/display").getFile().substring(1, 66) + dic;
         
         StringBuffer hud = new StringBuffer();
 
